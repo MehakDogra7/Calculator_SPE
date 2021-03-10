@@ -1,9 +1,20 @@
 ---
-- name: Copy jar file to remoter server
-  hosts: remoteserver
+- name: Pull the image in production host and create the container
+  hosts: Host
   tasks:
-  - copy:
-      src: ./target/calculator-devops-1.0-SNAPSHOT-jar-with-dependencies.jar
-      dest: ~/
-
-
+    - name: Docker login
+      shell:
+        cmd: docker login
+    - name: Pulling the Image
+      shell:
+        cmd: docker pull mehakdogra0067/scientific_calculator:latest
+    - name: Removing old Container
+      shell:
+        cmd: docker rm calculator
+      ignore_errors: yes
+    - name: Creating new Container
+      shell:
+        cmd: docker create -it /home/mehak/Documents/IIITB/sem2/minispe/calculator/calculator.log:/calculator.log --name calculator mehakdogra0067/scientific_calculator:latest
+    - name: Remove unused Images
+      shell:
+        cmd: docker image prune -f
