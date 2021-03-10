@@ -1,5 +1,5 @@
 FROM openjdk:8
-MAINTAINER Shubham Aggarwal shubhamaggarwal890@gmail.com
+MAINTAINER Mehak Dogra mehak.dogra@iiitb.org
 COPY ./target/calculator-devops-1.0-SNAPSHOT-jar-with-dependencies.jar ./
 WORKDIR ./
 CMD ["java", "-jar", "calculator-devops-1.0-SNAPSHOT-jar-with-dependencies.jar"]
