@@ -1,2 +1,2 @@
 [Host]
-172.16.144.106 ansible_user = mehak
+172.16.144.106 ansible_user=mehak
