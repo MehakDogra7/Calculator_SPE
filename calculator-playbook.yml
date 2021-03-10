@@ -14,7 +14,7 @@
       ignore_errors: yes
     - name: Creating new Container
       shell:
-        cmd: docker create -it /home/mehak/Documents/IIITB/sem2/minispe/calculator/calculator.log:/calculator.log --name calculator mehakdogra0067/scientific_calculator:latest
+        cmd: docker create -it -v /home/mehak/Documents/IIITB/sem2/minispe/calculator/calculator.log:/calculator.log --name calculator mehakdogra0067/scientific_calculator:latest
     - name: Remove unused Images
       shell:
         cmd: docker image prune -f
