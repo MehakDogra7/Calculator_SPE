@@ -13,13 +13,13 @@ pipeline {
             }
         }
 
-        stage('Build Executable Jar'){
+        stage('Maven Build'){
                 steps {
                      sh 'mvn clean test package'
                 }
         }
 
-        stage('Building image') {
+        stage('Docker Image Build') {
           steps{
             script {
               dockerImage = docker.build registry + ":${env.BUILD_NUMBER}"
@@ -28,7 +28,7 @@ pipeline {
           }
         }
 
-        stage('Deploy Image') {
+        stage('Push Docker Image') {
               steps{
                 script {
                   docker.withRegistry( '', registryCredential ) {

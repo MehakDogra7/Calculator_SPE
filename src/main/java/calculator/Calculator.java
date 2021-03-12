@@ -18,9 +18,9 @@ public class Calculator {
         Scanner scanner = new Scanner(System.in);
         double number = 0.0, number1 = 0.0, number2 = 0.0;
         do {
-            System.out.println("Calculator-DevOps, Choose to perform operation");
+            System.out.println("Welcome to the devops Calculator....\nPlease select the operation...\n\n");
             System.out.print("Press 1 to Square Root\nPress 2 to Factorial\nPress 3 to Logarithm\nPress 4 to Power\n" +
-                    "Press any other key to exit\nEnter your choice: ");
+                    "Press any other key to exit\n\n\nEnter your choice: ");
             int choice;
             try {
                 choice = scanner.nextInt();
@@ -62,6 +62,7 @@ public class Calculator {
                     break;
                 default:
                     System.out.println("Exiting....");
+                    logger.error("Invalid input, Entered input is not a number");
                     return;
             }
         } while (true);
@@ -72,38 +73,36 @@ public class Calculator {
 ● Natural logarithm (base е) - ln(x)
 ● Power function - x
 * */
-
     public double root(double number1) {
+        logger.info("[Square_root - Input] - " + number1);
         double result;
         if (number1 > 0) {
             result = Math.sqrt(number1);
         } else {
             result = 0;
         }
-        logger.info("[Square_root] - " + result);
+        logger.info("[Square_root - Output] - " + result);
         return result;
     }
-
     public double fact(double number1) {
+        logger.info("[Factorial - Input] - " + number1);
         double result = 1;
         for (int i = 1; i < number1; i++) {
             result *= i;
         }
-        logger.info("[Factorial] - " + result);
+        logger.info("[Factorial - Output] - " + result);
         return result;
     }
-
     public double power(double number1, double number2) {
+        logger.info("[Power - Input] - " + number1 + ", "+ number2);
         double result = Math.pow(number1, number2);
-        logger.info("[Power] - " + result);
+        logger.info("[Power - Output] - " + result);
         return result;
     }
-
     public double logar(double number1) {
+        logger.info("[Logarithm - Input] - " + number1);
         double result = Math.log(number1);
-        logger.info("[Logarithm] - " + result);
-
+        logger.info("[Logarithm - Output] - " + result);
         return result;
     }
-
 }
